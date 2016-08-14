@@ -1,0 +1,6 @@
+function infoConfirm(){
+	if(document.reg_fm.id.value.length==0){
+		alert("아이디는 필수 사항입니다.")
+		reg_frm.id.focus();
+	}
+}

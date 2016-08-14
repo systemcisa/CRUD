@@ -1,0 +1,17 @@
+package com.javalex.ex;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+public class MemberDto {
+	int ri=0;
+	
+	Connection connection=null;
+	PreparedStatement preparedStatement=null;
+	String query="insert into members vaues(?,?,?,?,?)";
+	
+	try{
+		connection=
+		
+	}
+}

@@ -1,0 +1,21 @@
+package com.javalec.daotoex;
+
+import java.util.ArrayList;
+
+public class MemberDAO {
+	
+	private String url="jdbc:oracle:thin:@localhost:1521:xe";
+	private String uid="scott";
+	private String upw="tigher";
+	
+	public MemberDAO(){
+		try{
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	public ArrayList<MemberDTO> memberSelect(){
+		ArrayList<MemberDTO> dtos=enw ArrayList<MemberDTO>();
+	}
+}

@@ -1,0 +1,73 @@
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.Connection"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%!
+	Connection connection;
+	PreparedStatement preparedStatement;
+	ResultSet resultSet;
+	
+	String driver="oracle.jdbc.driver.OracleDriver";
+	String url="jdbc:orcale:thin:@localhost:1521:xe";
+	String uid="scott";
+	String upw="tiger";
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<%
+		try{
+			Class.forName(driver);
+			connection=DriverManager.getConnection(url, uid, upw);
+			int n;
+			String query="insert tinto memberforpre (id, pw, name, phone) values(?, ?, ?, ?)";
+			preparedStatement=connection.prepareStatement(query);
+			
+			preparedStatement.setString(1, "abcv");
+			preparedStatement.setString(2, "123");
+			preparedStatement.setString(3, "kim");
+			preparedStatement.setString(4, "010-2222-4444");
+			n=preparedStatement.executeUpdate();
+			
+			preparedStatement.setString(1, "sdgg");
+			preparedStatement.setString(2, "33444");
+			preparedStatement.setString(3, "yang");
+			preparedStatement.setString(4, "010-2234-4987");
+			n=preparedStatement.executeUpdate();
+			
+			preparedStatement.setString(1, "khlg");
+			preparedStatement.setString(2, "8905");
+			preparedStatement.setString(3, "monon");
+			preparedStatement.setString(4, "010-2672-4992");
+			n=preparedStatement.executeUpdate();
+			
+			preparedStatement.setString(1, "iyou");
+			preparedStatement.setString(2, "54312");
+			preparedStatement.setString(3, "hhoo");
+			preparedStatement.setString(4, "010-2999-3334");
+			n=preparedStatement.executeUpdate();
+			
+			if(n==1){
+				out.println("insert success");
+			}else{
+				out.println("insert fail");
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try{
+				if(resultSet !=null)resultSet.close();
+				if(preparedStatement !=null)preparedStatement.close();
+				if(connection !=null)connection.close();
+			}catch(Exception e){}
+		}
+	%>
+</body>
+</html>
